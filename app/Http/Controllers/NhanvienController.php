@@ -12,7 +12,7 @@ class NhanvienController extends Controller
 {
     public function index(Request $request)
     {
-        $nhanvien = Nhanvien::all();
+        $nhanvien = Nhanvien::paginate(3);
         if ($request->post() && $request->searchNhanvien) {
             $nhanvien = DB::table('nhanvien')
                 ->where('ten', 'like', '%' . $request->searchNhanvien . '%')
